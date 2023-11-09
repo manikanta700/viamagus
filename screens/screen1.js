@@ -1,11 +1,15 @@
 import React , { useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Button,TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Button,TouchableOpacity ,Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon_ from 'react-native-vector-icons/FontAwesome'; //FontAwesome
 import * as Progress from 'react-native-progress';
 import PredictionModal from './modelpopup';
 import ProfileModal from './profile_popup';
+import CountdownTimer from './countertime';
 
+//device width & height
+const width =  Dimensions.get('window').width
+const height = Dimensions.get('window').height
 
 const TodayGamesScreen = () => {
   const data = [
@@ -42,7 +46,8 @@ const TodayGamesScreen = () => {
       </View>
       <Text style={{fontSize: 13,fontWeight: 'bold',color:'#B3B3B3' ,marginTop:0.5,marginLeft:5}}>Starting in</Text>
       <Icon name="clock-time-four" size={18} color="#B3B3B3" style={{marginLeft:3}} />
-      <Text style={{fontSize: 13,fontWeight: 'bold',color:'#B3B3B3' ,marginTop:0.5,marginLeft:5}}>{item.strt_time}</Text>
+      <Text style={{fontSize: 13,fontWeight: 'bold',color:'#B3B3B3' ,marginTop:0.5,marginLeft:5}}>{<CountdownTimer initialTime={item.strt_time}/>
+}</Text>
       </View>
 
 
@@ -127,7 +132,7 @@ const TodayGamesScreen = () => {
 
       </View>
       <View style={{flex:1}}>
-         <Progress.Bar progress={(item.predicted_over/item.total_players)} width={310} color={'#FF4191'} unfilledColor={'#2CACAD'} borderWidth={0}/>
+         <Progress.Bar progress={(item.predicted_under/item.total_players)} width={(width-(width/10))} color={'#FF4191'} unfilledColor={'#2CACAD'} borderWidth={0}/>
 
       </View>
       <View style={{flex:2,flexDirection:'row'}}>

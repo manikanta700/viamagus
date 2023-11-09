@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Modal, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Modal, ScrollView, TouchableOpacity,Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import Icon_ from 'react-native-vector-icons/FontAwesome'; //FontAwesome
+
+//device width & height
+const width =  Dimensions.get('window').width
+const height = Dimensions.get('window').height
 
 
 const PredictionModal = ({ isVisible, onClose, onPredictionSubmit,user_option}) => {
@@ -28,7 +32,7 @@ const PredictionModal = ({ isVisible, onClose, onPredictionSubmit,user_option}) 
     >
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-        <Icon name="chevron-down" size={35} color="#B3B3B3" style={{marginTop:-15,marginLeft:140}} onPress={onClose}/>
+        <Icon name="chevron-down" size={35} color="#B3B3B3" style={{marginTop:-15,marginLeft:width/2.3}} onPress={onClose}/>
           <Text style={styles.heading}>Your Prediction is {user_option}</Text>
           <Text style={{fontSize: 14,fontWeight: '600',color:'#ADADAF' }}>ENTRY TICKETS</Text>
 
@@ -74,8 +78,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
-    width: 350,
-    height:450,
+    width: width,
+    height:height-(height/2.5),
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 20,
@@ -94,11 +98,12 @@ const styles = StyleSheet.create({
   },
   numberOption: {
     padding: 10,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0,
     borderBottomColor: 'lightgray',
   },
   selectedOption: {
     backgroundColor: '#F1EBF7',
+
   },
   numberText: {
     fontSize: 16,

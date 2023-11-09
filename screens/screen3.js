@@ -1,11 +1,14 @@
 import React ,{useState} from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet ,ScrollView,FlatList} from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet ,ScrollView,FlatList,Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';//logout
 import Icon_ from 'react-native-vector-icons/MaterialCommunityIcons'; //chaticon,logo
 import Icon__ from 'react-native-vector-icons/FontAwesome'; //Arraw 
 import Icon___ from 'react-native-vector-icons/Foundation'; //Foundation
 
 
+//device width & height
+const width =  Dimensions.get('window').width
+const height = Dimensions.get('window').height
 
 const ProfileScreen = ({onClick}) => {
 
@@ -175,7 +178,7 @@ const ProfileScreen = ({onClick}) => {
               )}
             />
           </View>
-          <View style={{flex:4,flexDirection:'row',justifyContent:'space-around',width:330}}>
+          <View style={{flex:1,flexDirection:'row',justifyContent:'space-around',alignContent:'flex-end',width:width-(width/10)}}>
         <View style={{}}>
         <Icon__ name="home" size={15} color="#6231AE" style={{marginLeft:9,marginTop:2}} />
 
@@ -222,12 +225,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-    backgroundColor:'white'
+    backgroundColor:'white',
+    
   },
   topLogos: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 320,
+    width: (width-(width/10)),
     
   },
   
@@ -273,6 +277,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'white',
     marginBottom: 20,
+    
   },
   option: {
     flex: 1,
@@ -291,8 +296,9 @@ const styles = StyleSheet.create({
 
   },
   badgesList: {
-  height:200,
-  width:300,
+  // height:height-(height/1.4),
+  flex:8,
+  width:(width-(width/10)),
   marginBottom: 20,
   backgroundColor:'#F6F3FA'
   
